@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "Sign Up";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model CicekSepeti.Model.NewUserViewModel
+
+@using (Html.BeginForm("SignUp", "Account", new {ReturnUrl = ViewBag.ReturnUrl}, FormMethod.Post, new {@role = "form", novalidate=true}))
+{
+    <div class="row">
+        <div class="col-md-4">
+            &nbsp;
+        </div>
+        <div class="col-md-4">
+            @Html.ValidationSummary(true)
+            <h2>Sign Up</h2>
+            <div class="form-group">
+                @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", placeholder = "First Name" })
+                @Html.ValidationMessageFor(m => m.FirstName)
+            </div>
+            <div class="form-group">
+                @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", placeholder = "Last Name" })
+                @Html.ValidationMessageFor(m => m.LastName)
+            </div>
+            <div class="form-group">
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email" })
+                @Html.ValidationMessageFor(m => m.Email)
+            </div>
+            <div class="form-group">
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
+                @Html.ValidationMessageFor(m => m.Password)
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary btn-block" type="submit" id="submit">Submit</button>
+            </div>
+        </div>
+        <div class="col-md-4">
+            &nbsp;
+        </div>
+    </div>
+}

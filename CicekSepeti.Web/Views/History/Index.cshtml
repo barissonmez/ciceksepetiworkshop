@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "History";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model IEnumerable<CicekSepeti.Model.ActivityDTO>
+
+<div class="row">
+    <div class="col-md-2">
+        &nbsp;
+    </div>
+    <div class="col-md-8">
+        <div class="text-center"><h2>Activity History</h2></div>
+        <table class="table table-striped table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th class="text-center">Order</th>
+                    <th class="text-center">Login Activity Date & Time </th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                @foreach (var item in Model.Select((value, index) => new { index, value }))
+                {
+                    <tr>
+                        <td class="text-center">@(item.index + 1)</td>
+                        <td class="text-center">@item.value.LoginDateTime</td>
+                    </tr>
+                }
+                
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-2">
+        &nbsp;
+    </div>
+</div>
+
